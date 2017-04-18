@@ -1,0 +1,26 @@
+Guys... this is a starting point for a user story. Refine through comments, please! I'm not to used to writing user stories this way, so, please give any feedback on my submission style and I'll try to make subsequent stories better.
+
+When I request a user login with email address and password, a successful login attempt should return not only a status, but, my account information.
+The endpoint should detect the X-session value and remember the user by that OR allow me to pass the X-session value from the client session and return the information associated with that customer on subsequent requests for customer-specific information.
+My goal with the id numbers on the wishlists is that we should be able to pass it to other endpoints as a parameter to receive the details.
+
+Endpoint: /api/user-login
+Request type: POST
+Body key values:
+  email: email
+  password: password
+  
+Success Response JSON kvs:
+  id: (customer id)
+  email: (same as used to log in - just confirms login success)
+  orders: [ {order_number, creation date, number of items, amount} ] - 10 most recent orders
+  shipping_addresses:[] - full details
+  billing_addresses:[] - full details
+  wish_lists: [ {name, creation date, number of items, id } ]
+  
+Error Responses:
+  type: standard html types
+  error messages:
+    user name and password don't match
+    unable to login, please try again (timeout, network error, etc.)
+    
